@@ -25,9 +25,9 @@ This project is a server built with **Express.js** using **TypeScript**. The ser
 
 ### Type of tracing:
 
-- **1. Performance Diagnosis:** Tracing helps identify capacity of server usage in the application such as slow functions or memory leaks. Which can reason to decrease performance.
+- **Performance Diagnosis:** Tracing helps identify capacity of server usage in the application such as slow functions or memory leaks. Which can reason to decrease performance.
 
-- **2. Debugging:** Most Cases, making it easier to locate and fix bugs under asynchronous flow.
+- **Debugging:** Most Cases, making it easier to locate and fix bugs under asynchronous flow.
 
 ### Tools and Techniques:
 
@@ -42,11 +42,11 @@ This project is a server built with **Express.js** using **TypeScript**. The ser
 
 Simple way to say, Its a model that describes the different levels of testing required for a pre define testing strategy. It consists of three main levels:
 
-- **1. Unit Tests:** Test each target function and process. Which need to get specific type of output. We used multiple library and tool such as popular one library is Jest.
+- **Unit Tests:** Test each target function and process. Which need to get specific type of output. We used multiple library and tool such as popular one library is Jest.
 
-- **2. Integration Tests:** These tests are in the middle of the pyramid and focus on interactions between different modules or services. They test how components work together.
+- **Integration Tests:** These tests are in the middle of the pyramid and focus on interactions between different modules or services. They test how components work together.
 
-- **3. End to End Tests:** At the top of the pyramid, these tests simulate user scenarios and validate the entire application stack, from the UI to the backend.
+- **End to End Tests:** At the top of the pyramid, these tests simulate user scenarios and validate the entire application stack, from the UI to the backend.
 
 ### Importance of Balance:
 
@@ -56,9 +56,9 @@ A balanced approach ensures that issues are caught early in the development proc
 
 ### a. Clusters and Worker Threads in Node JS
 
-- **1. Clusters:** Node.js is single threaded technology, but the Cluster module allows the application to be scaled across multiple CPU cores by creating child processes or worker that share the same server port. This helps distribute the load and improve performance.
+- **Clusters:** Node.js is single threaded technology, but the Cluster module allows the application to be scaled across multiple CPU cores by creating child processes or worker that share the same server port. This helps distribute the load and improve performance.
 
-- **2. Worker Threads:** Worker Threads provide a way to run JavaScript in parallel on multiple threads, separate from the main thread. This is useful for CPU intensive tasks and run event loop in thread.
+- **Worker Threads:** Worker Threads provide a way to run JavaScript in parallel on multiple threads, separate from the main thread. This is useful for CPU intensive tasks and run event loop in thread.
 
 ### Use Cases:
 
@@ -67,10 +67,10 @@ A balanced approach ensures that issues are caught early in the development proc
 
 ### b. Strategies for Managing High Request Services
 
-- **1. Load Balancing:** Distribute incoming requests across multiple server instances.
-- **2. Clustering:** Utilize Node JS clusters take advantage of multi core processors.
-- **3. Event Loop Monitoring:** Monitor and optimize the event loop to avoid blocking it with long running tasks.
-- **4. Caching:** Implement caching mechanisms to reduce the load. Redis is great option to store session based caches.
+- **Load Balancing:** Distribute incoming requests across multiple server instances.
+- **Clustering:** Utilize Node JS clusters take advantage of multi core processors.
+- **Event Loop Monitoring:** Monitor and optimize the event loop to avoid blocking it with long running tasks.
+- **Caching:** Implement caching mechanisms to reduce the load. Redis is great option to store session based caches.
 
 ### Event Loop and Non Blocking:
 
@@ -78,11 +78,11 @@ The event loop is the core of Node JS continues running realtime connection mode
 
 ### c. Asynchronous vs Synchronous Functions in Node JS
 
-- **1. Asynchronous Functions:** Do not block the event loop they allow other operations to continue while waiting for a task to complete. This improves the performance and scalability of Node JS applications, especially when we making realtime chat API's.
+- **Asynchronous Functions:** Do not block the event loop they allow other operations to continue while waiting for a task to complete. This improves the performance and scalability of Node JS applications, especially when we making realtime chat API's.
 
-- **2. Synchronous Functions:** Block the event loop until the task is completed.
+- **Synchronous Functions:** Block the event loop until the task is completed.
 
-**3. Performance and Scalability Impact:** Asynchronous functions are preferred in Node JS because they allow the application to handle multiple tasks concurrently. Achieving to better scalability and performance.
+**Performance and Scalability Impact:** Asynchronous functions are preferred in Node JS because they allow the application to handle multiple tasks concurrently. Achieving to better scalability and performance.
 
 ## Setup and Installation
 
