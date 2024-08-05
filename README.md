@@ -33,12 +33,13 @@ This project is a server built with **Express.js** using **TypeScript**. The ser
 
 - **Node JS Built-in Tracing Flag --trace-events**
 - **Chrome DevTools**
-- **Add console.log line for instant detect response** 
-Many other ways to trace and detect and debug project unit cased or rendered output.
+- **Add console.log line for instant detect response**
+  Many other ways to trace and detect and debug project unit cased or rendered output.
 
 ### b. Test Pyramid in Node JS
 
 ### Test Pyramid
+
 Simple way to say, Its a model that describes the different levels of testing required for a pre define testing strategy. It consists of three main levels:
 
 - **1. Unit Tests:** Test each target function and process. Which need to get specific type of output. We used multiple library and tool such as popular one library is Jest.
@@ -60,17 +61,19 @@ A balanced approach ensures that issues are caught early in the development proc
 - **2. Worker Threads:** Worker Threads provide a way to run JavaScript in parallel on multiple threads, separate from the main thread. This is useful for CPU intensive tasks and run event loop in thread.
 
 ### Use Cases:
+
 - Useful for scaling web servers that need to handle many simultaneous requests.
 - Ideal for CPU bound tasks like image processing and large data processing or complex calculations.
 
 ### b. Strategies for Managing High Request Services
 
 - **1. Load Balancing:** Distribute incoming requests across multiple server instances.
-- **2. Clustering:** Utilize Node JS clusters take advantage of  multi core processors.
+- **2. Clustering:** Utilize Node JS clusters take advantage of multi core processors.
 - **3. Event Loop Monitoring:** Monitor and optimize the event loop to avoid blocking it with long running tasks.
 - **4. Caching:** Implement caching mechanisms to reduce the load. Redis is great option to store session based caches.
 
 ### Event Loop and Non Blocking:
+
 The event loop is the core of Node JS continues running realtime connection model, enabling it to handle many important connections efficiently by IO operations to the operating system.
 
 ### c. Asynchronous vs Synchronous Functions in Node JS
@@ -86,7 +89,28 @@ The event loop is the core of Node JS continues running realtime connection mode
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-repository.git
-   cd your-repository
+   git clone https://github.com/https://github.com/waqarkhan09099/vative_App_NodeJS_Task.git
+
+   ```
+
+2. **Switch to Project Directory**:
+
+   ```bash
+   cd vative_App_NodeJS_Task
+
+   ```
+3. **Install Dependencies**:
+
+   ```bash
    npm install --save
-   npm start
+   ```
+4. **Unit Tests**:
+
+   ```bash
+   npm run test
+   ```
+4. **Start Project Server**:
+
+   ```bash
+   npm run start
+   ```
