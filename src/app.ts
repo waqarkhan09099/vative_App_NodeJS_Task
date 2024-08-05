@@ -8,6 +8,9 @@ import bodyParser from 'body-parser';
 import redisClient from './configs/redisClient.config';
 import logger from './configs/logger.config';
 import connectToDb from './configs/db.config';
+import chatRoutes from './routes/chat.route'
+import authRoutes from './routes/auth.route'
+import fibonacciRoutes from './routes/fibonacci.route'
 
 const redisStore = connectRedis(session);
 const app = express();
@@ -46,6 +49,12 @@ app.use((req, res, next) => {
   console.log(`http ${req.method} ${req.url}`);
   next();
 });
+
+// --------------- Routes ---------------------
+
+app.use('/api/chat', chatRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api', fibonacciRoutes);
 
 app.get("*", (req, res) => {
   res.status(200).json({status:false,error:"Route doesn't exist"});
