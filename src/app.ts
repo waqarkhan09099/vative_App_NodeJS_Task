@@ -11,6 +11,7 @@ import connectToDb from './configs/db.config';
 import chatRoutes from './routes/chat.route'
 import authRoutes from './routes/auth.route'
 import fibonacciRoutes from './routes/fibonacci.route'
+import romanToIntTaskRoutes from './routes/romanToInteger.route';
 
 const redisStore = connectRedis(session);
 const app = express();
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 
 app.use('/api/chat', chatRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api', romanToIntTaskRoutes);
 app.use('/api', fibonacciRoutes);
 
 app.get("*", (req, res) => {
