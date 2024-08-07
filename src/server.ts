@@ -6,9 +6,24 @@ import { envConfig } from './configs/env.config';
 import http from 'http'
 import app from './app';
 import { initializeChat } from './services/chat.service';
+import cluster from 'node:cluster';
+import os from "node:os"
 
+const numCPUs = os.cpus().length;
 const { SERVER_PORT, SERVER_PROTOCOL, NODE_ENV, SERVER_HOST } = envConfig.env;
 
+if (cluster.isPrimary) {
+    console.log(`Primary process ${process.pid} is running`);
+
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`Worker ${worker.process.pid} died. Forking a new worker...`);
+        cluster.fork();
+    });
+} else {
 let server: http.Server | https.Server
 if (!SERVER_PROTOCOL || SERVER_PROTOCOL == 'http') server = http.createServer(app)
 else {
@@ -51,3 +66,4 @@ async function startServer(server: http.Server | https.Server): Promise<void> {
         throw Error(`Server Connection Error: ${error}`)
     }
 })()
+}
