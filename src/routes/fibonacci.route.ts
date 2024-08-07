@@ -17,11 +17,9 @@ router.get('/fibonacci/:number', (req: Request, res: Response): void => {
     });
 
     worker.on('message', (result: number | { error: string }) => {
-        // Check if the result is an object with an error property
         if (typeof result === 'object' && 'error' in result) {
             res.status(500).send(`Error calculating Fibonacci: ${result.error}`);
         } else {
-            // Otherwise, assume it's the Fibonacci result and send it back
             res.json({ result });
         }
     });
