@@ -8,6 +8,8 @@ import app from './app';
 import { initializeChat } from './services/chat.service';
 import cluster from 'node:cluster';
 import os from "node:os"
+import process from "node:process"
+
 
 const numCPUs = os.cpus().length;
 const { SERVER_PORT, SERVER_PROTOCOL, NODE_ENV, SERVER_HOST } = envConfig.env;
@@ -57,6 +59,7 @@ async function startServer(server: http.Server | https.Server): Promise<void> {
         const url = `${SERVER_PROTOCOL || 'http'}://${SERVER_HOST || 'localhost'}:${SERVER_PORT || 4000}`
         console.log(`Server is now running on ${url} in ${NODE_ENV || 'development'} mode`)
     })
+    console.log(`Worker ${process.pid} started`);
 }
 
 (async () => {
