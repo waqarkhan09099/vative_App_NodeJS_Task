@@ -4,24 +4,25 @@ import path from 'path';
 
 const router = Router();
 
-router.get('/fibonacci/:number', async (req: Request, res: Response): Promise<Response> => {
+router.get('/fibonacci/:number', (req: Request, res: Response): void => {
     const number = parseInt(req.params.number, 10);
 
     if (isNaN(number) || number < 0) {
-        return res.status(400).send('Invalid number');
+        res.status(400).send('Invalid number');
+        return;
     }
 
-    const worker = new Worker(path.resolve(__dirname, '../workers/fibonacciWorker.ts'));
+    const worker = new Worker(path.resolve(__dirname, '../workers/fibonacciWorker.js'), {
+        workerData: number,
+    });
 
-    worker.postMessage(number);
-
-    worker.on('message', (result: number[] | { error: string }) => {
-        if (Array.isArray(result)) {
-            return res.json(result);
-        } else if ('error' in result) {
-            return res.status(500).send(`Error calculating Fibonacci: ${result.error}`);
+    worker.on('message', (result: number | { error: string }) => {
+        // Check if the result is an object with an error property
+        if (typeof result === 'object' && 'error' in result) {
+            res.status(500).send(`Error calculating Fibonacci: ${result.error}`);
         } else {
-            return res.status(500).send('Unknown error occurred');
+            // Otherwise, assume it's the Fibonacci result and send it back
+            res.json({ result });
         }
     });
 
@@ -35,8 +36,6 @@ router.get('/fibonacci/:number', async (req: Request, res: Response): Promise<Re
             console.error(`Worker stopped with exit code ${code}`);
         }
     });
-
-    return res;
 });
 
 export default router;
